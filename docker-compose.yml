@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  db: 
+  db:
     image: postgres:12.2-alpine
     container_name: "database"
     ports:
@@ -14,7 +14,7 @@ services:
       - fullstack
     volumes:
       - database_postgres:/var/lib/postgresql/data
-
+  
   api:
     build: .
     container_name: "grpc-microservice"
