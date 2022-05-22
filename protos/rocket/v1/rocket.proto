@@ -19,7 +19,7 @@ service RocketService {
 
 // -- Get Rocket Handler -- 
 message GetRocketRequest {
-    int64 id = 1;
+    string id = 1;
 }
 
 message GetRocketResponse {
@@ -40,7 +40,7 @@ message AddRocketResponse {
 
 // -- Add Rocket Handler -- 
 message DeleteRocketRequest {
-    int64 id = 1;
+    string id = 1;
 }
 
 message DeleteRocketResponse {

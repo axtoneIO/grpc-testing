@@ -40,14 +40,14 @@ func New() (Store, error) {
 	}, nil
 }
 
-func (s Store) GetRocketById(id string) (rocket.Rocket,error){
+func (s Store) GetRocket(id string) (rocket.Rocket,error){
 	return rocket.Rocket{},nil
 }
 
-func (s Store) InsertRocket(rkt rocket.Rocket) (rocket.Rocket, error) {
+func (s Store) AddRocket(rkt rocket.Rocket) (rocket.Rocket, error) {
 	return rocket.Rocket{}, nil
 }
 
-func (s Store) DeleteRocket(id string) error {
-	return nil
+func (s Store) DeleteRocket(id string) (string,error) {
+	return "",nil
 }

@@ -6,18 +6,15 @@ import "context"
 // Rocket - should contain the definition of our
 // rocket
 type Rocket struct {
-	ID      string
-	Name    string
 	Type    string
-	Flights int
 }
 
 // store defines the interface we expect
 // our database implementation to follow
 type Store interface {
-	GetRocketById(id string) (Rocket, error)
-	InsertRocket(rkt Rocket) (Rocket, error)
-	DeleteRocket(id string) error
+	GetRocket(id string) (Rocket, error)
+	AddRocket(rkt Rocket) (Rocket, error)
+	DeleteRocket(id string) (string,error)
 }
 
 // Service - our rocket service, responsible for
@@ -34,8 +31,8 @@ func New(store Store) Service {
 }
 
 // GetRocketById - retrieves a rocket by id from the store
-func (s Service) GetRocketById(ctx context.Context, id string) (Rocket, error) {
-	rkt, err := s.Store.GetRocketById(id)
+func (s Service) GetRocket(ctx context.Context, id string) (Rocket, error) {
+	rkt, err := s.Store.GetRocket(id)
 
 	if err != nil {
 		return Rocket{}, err
@@ -45,8 +42,8 @@ func (s Service) GetRocketById(ctx context.Context, id string) (Rocket, error) {
 }
 
 // InsertRocket - inserts a new rocket into the store
-func (s Service) InsertRocket(ctx context.Context, rkt Rocket) (Rocket, error) {
-	rkt, err := s.Store.InsertRocket(rkt)
+func (s Service) AddRocket(ctx context.Context, rkt Rocket) (Rocket, error) {
+	rkt, err := s.Store.AddRocket(rkt)
 
 	if err != nil {
 		return Rocket{}, err
@@ -56,12 +53,12 @@ func (s Service) InsertRocket(ctx context.Context, rkt Rocket) (Rocket, error) {
 }
 
 // DeleteRocket - deletes a rocket by id from the store
-func (s Service) DeleteRocket(id string) error {
-	err := s.Store.DeleteRocket(id)
+func (s Service) DeleteRocket(ctx context.Context, id string) (string,error) {
+	status,err := s.Store.DeleteRocket(id)
 
 	if err != nil {
-		return err
+		return status,err
 	}
 
-	return nil
+	return status,nil
 }
