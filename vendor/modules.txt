@@ -1,3 +1,6 @@
+# github.com/davecgh/go-spew v1.1.1
+## explicit
+github.com/davecgh/go-spew/spew
 # github.com/golang-migrate/migrate/v4 v4.15.2
 ## explicit; go 1.16
 github.com/golang-migrate/migrate/v4
@@ -30,8 +33,14 @@ github.com/jmoiron/sqlx/reflectx
 github.com/lib/pq
 github.com/lib/pq/oid
 github.com/lib/pq/scram
+# github.com/pmezard/go-difflib v1.0.0
+## explicit
+github.com/pmezard/go-difflib/difflib
 # github.com/stretchr/testify v1.7.1
 ## explicit; go 1.13
+github.com/stretchr/testify/assert
+github.com/stretchr/testify/require
+github.com/stretchr/testify/suite
 # go.uber.org/atomic v1.7.0
 ## explicit; go 1.13
 go.uber.org/atomic
@@ -135,3 +144,6 @@ google.golang.org/protobuf/types/descriptorpb
 google.golang.org/protobuf/types/known/anypb
 google.golang.org/protobuf/types/known/durationpb
 google.golang.org/protobuf/types/known/timestamppb
+# gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
+## explicit
+gopkg.in/yaml.v3
