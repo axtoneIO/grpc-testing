@@ -6,7 +6,9 @@ option go_package= "./rocket/v1";
 
 // Rocket represents the model of our rocket
 message Rocket {
-    string type = 1;
+    string ID   = 1;
+    string Name = 2;
+    string type = 3;
 }
 
 // RocketService - defines what endpoints we'll be exposing

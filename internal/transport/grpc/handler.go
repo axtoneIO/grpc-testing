@@ -46,7 +46,20 @@ func (h Handler) Serve() error {
 }
 
 func (h Handler) GetRocket(ctx context.Context, req *rkt.GetRocketRequest) (*rkt.GetRocketResponse,error){
-	return &rkt.GetRocketResponse{},nil
+	log.Println("Get Rocket gRPC Endpoint Hit")
+
+	rocket, err := h.RocketService.GetRocket(ctx,req.Id)
+	if err != nil {
+		return &rkt.GetRocketResponse{},err
+	}
+	
+	return &rkt.GetRocketResponse{
+		Rocket: &rkt.Rocket{
+			ID: 	rocket.ID,
+			Name:	rocket.Name,
+			Type: 	rocket.Type,
+		},
+	},nil
 }
 
 func (h Handler) AddRocket(ctx context.Context, req *rkt.AddRocketRequest) (*rkt.AddRocketResponse,error){
