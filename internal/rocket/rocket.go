@@ -6,7 +6,7 @@ import "context"
 // Rocket - should contain the definition of our
 // rocket
 type Rocket struct {
-	ID		string
+	Id		int64
 	Name	string
 	Type    string
 }
@@ -14,9 +14,9 @@ type Rocket struct {
 // store defines the interface we expect
 // our database implementation to follow
 type Store interface {
-	GetRocket(id string) (Rocket, error)
+	GetRocket(id int64) (Rocket, error)
 	AddRocket(rkt Rocket) (Rocket, error)
-	DeleteRocket(id string) (string,error)
+	DeleteRocket(id int64) (string,error)
 }
 
 // Service - our rocket service, responsible for
@@ -33,7 +33,7 @@ func New(store Store) Service {
 }
 
 // GetRocketById - retrieves a rocket by id from the store
-func (s Service) GetRocket(ctx context.Context, id string) (Rocket, error) {
+func (s Service) GetRocket(ctx context.Context, id int64) (Rocket, error) {
 	rkt, err := s.Store.GetRocket(id)
 
 	if err != nil {
@@ -55,7 +55,7 @@ func (s Service) AddRocket(ctx context.Context, rkt Rocket) (Rocket, error) {
 }
 
 // DeleteRocket - deletes a rocket by id from the store
-func (s Service) DeleteRocket(ctx context.Context, id string) (string,error) {
+func (s Service) DeleteRocket(ctx context.Context, id int64) (string,error) {
 	status,err := s.Store.DeleteRocket(id)
 
 	if err != nil {

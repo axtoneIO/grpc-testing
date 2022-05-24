@@ -6,7 +6,7 @@ option go_package= "./rocket/v1";
 
 // Rocket represents the model of our rocket
 message Rocket {
-    string ID   = 1;
+    int64 id   = 1;
     string Name = 2;
     string type = 3;
 }
@@ -21,7 +21,7 @@ service RocketService {
 
 // -- Get Rocket Handler -- 
 message GetRocketRequest {
-    string id = 1;
+    int64 id = 1;
 }
 
 message GetRocketResponse {
@@ -42,7 +42,7 @@ message AddRocketResponse {
 
 // -- Add Rocket Handler -- 
 message DeleteRocketRequest {
-    string id = 1;
+    int64 id = 1;
 }
 
 message DeleteRocketResponse {
