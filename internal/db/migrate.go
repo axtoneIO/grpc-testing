@@ -9,8 +9,9 @@ import (
 	_ "github.com/lib/pq"
 )
 
+// Migrate - will execute the migration task according to the files contained
+// on the migrations directory
 func (s *Store) Migrate() error {
-	log.Println("migrate")
 	driver, err := postgres.WithInstance(s.db.DB, &postgres.Config{})
 	if err != nil{
 		return err
