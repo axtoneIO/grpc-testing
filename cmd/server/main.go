@@ -1,10 +1,32 @@
 package main
 
-import "log"
+import (
+	"log"
+
+	"github.com/axtoneIO/grpc-testing/internal/db"
+	"github.com/axtoneIO/grpc-testing/internal/rocket"
+	"github.com/axtoneIO/grpc-testing/internal/transport/grpc"
+)
 
 func Run() error {
-	// responsible for initializing and starting 
+	// responsible for initializing and starting
 	// our gRPC server
+	rocketStore, err := db.New()
+	if err != nil {
+		return err
+	}
+	err = rocketStore.Migrate()
+	if err != nil {
+		log.Println("Failed to run migrations")
+	}
+
+	rktService := rocket.New(rocketStore)
+	rktHandler := grpc.New(rktService)
+
+	if err := rktHandler.Serve(); err != nil {
+		return err
+	}
+
 	return nil
 }
 
