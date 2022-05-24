@@ -3,7 +3,7 @@
 
 [![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
 
-[![Build Status](https://github.com/axtoneIO)](https://github.com/axtoneIO)
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://github.com/axtoneIO)
 
 This is a gRPC micro-services project that is interacting with a postgresql database and is responsible for managing an inventory of Rockets 🚀🚀 I started from scratch and incrementally added new features, the whole purpose of the project was creating a proper configuration for gRPC unit tests..
 
